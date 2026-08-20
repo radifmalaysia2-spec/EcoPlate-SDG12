@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<defs><style>
+.box{fill:#fff;stroke:#1f7660;stroke-width:3;rx:18}.head{fill:#143047}.title{font:700 24px Arial;fill:#fff}.st{font:18px Arial;fill:#263d37}.tag{font:italic 16px Arial;fill:#cce9df}.line{stroke:#496b61;stroke-width:3;fill:none}.dash{stroke-dasharray:10 8}.label{font:16px Arial;fill:#496b61}
+</style><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#496b61"/></marker><marker id="hollow" markerWidth="14" markerHeight="14" refX="12" refY="6" orient="auto"><path d="M0,0 L0,12 L12,6 z" fill="#fff" stroke="#496b61" stroke-width="2"/></marker></defs>
+<rect width="1600" height="1050" fill="#f4f8f6"/><text x="70" y="62" font-family="Arial" font-weight="700" font-size="34" fill="#143047">EcoPlate - UML Class Diagram</text><text x="70" y="94" font-family="Arial" font-size="18" fill="#597269">SDG 12 food-waste decision support application</text>
+<!-- connectors behind nodes -->
+<path class="line" marker-end="url(#arrow)" d="M315 292 V355 H575 V420"/><text class="label" x="385" y="343">manages 0..*</text>
+<path class="line" marker-end="url(#arrow)" d="M1285 292 V355 H1025 V420"/><text class="label" x="1090" y="343">calls</text>
+<path class="line" marker-end="url(#arrow)" d="M800 630 V710 H300 V775"/><text class="label" x="450" y="695">persists through</text>
+<path class="line" marker-end="url(#arrow)" d="M800 630 V710 H800 V775"/><text class="label" x="815" y="695">selects</text>
+<path class="line" marker-end="url(#arrow)" d="M800 630 V710 H1300 V775"/><text class="label" x="1100" y="695">simulates with</text>
+<path class="line dash" marker-end="url(#hollow)" d="M160 930 H160 V875"/><path class="line dash" marker-end="url(#hollow)" d="M660 930 H660 V875"/>
+<path class="line" marker-end="url(#hollow)" d="M940 930 V875"/><path class="line" marker-end="url(#hollow)" d="M1180 930 V875"/>
+<!-- top -->
+<g><rect class="box" x="70" y="135" width="490" height="157"/><path class="head" d="M88 135h454a18 18 0 0 1 18 18v45H70v-45a18 18 0 0 1 18-18"/><text class="title" x="92" y="176">FoodBatch</text><text class="st" x="92" y="228">- id, name, category</text><text class="st" x="92" y="257">- preparedKg, remainingKg, safeUntil</text></g>
+<g><rect class="box" x="1040" y="135" width="490" height="157"/><path class="head" d="M1058 135h454a18 18 0 0 1 18 18v45h-490v-45a18 18 0 0 1 18-18"/><text class="title" x="1062" y="176">MainFrame</text><text class="st" x="1062" y="228">+ refresh(), addBatch()</text><text class="st" x="1062" y="257">+ simulate(), applyAction()</text></g>
+<!-- center -->
+<g><rect class="box" x="575" y="420" width="450" height="210"/><path class="head" d="M593 420h414a18 18 0 0 1 18 18v48H575v-48a18 18 0 0 1 18-18"/><text class="title" x="598" y="463">EcoPlateService</text><text class="st" x="598" y="520">- batches: List&lt;FoodBatch&gt;</text><text class="st" x="598" y="551">- impacts: List&lt;ImpactRecord&gt;</text><text class="st" x="598" y="582">+ simulate(), recommend(), apply(), save()</text></g>
+<!-- interfaces -->
+<g><rect class="box" x="70" y="775" width="300" height="100"/><path class="head" d="M88 775h264a18 18 0 0 1 18 18v43H70v-43a18 18 0 0 1 18-18"/><text class="title" x="92" y="811">DataStore</text><text class="tag" x="245" y="811">interface</text><text class="st" x="92" y="860">save() / load()</text></g>
+<g><rect class="box" x="570" y="775" width="460" height="100"/><path class="head" d="M588 775h424a18 18 0 0 1 18 18v43H570v-43a18 18 0 0 1 18-18"/><text class="title" x="592" y="811">WasteStrategy</text><text class="tag" x="865" y="811">interface</text><text class="st" x="592" y="860">recommend(batch): FoodAction</text></g>
+<g><rect class="box" x="1230" y="775" width="300" height="100"/><path class="head" d="M1248 775h264a18 18 0 0 1 18 18v43h-300v-43a18 18 0 0 1 18-18"/><text class="title" x="1252" y="811">DemandSimulator</text><text class="st" x="1252" y="860">simulateRemaining()</text></g>
+<!-- implementations -->
+<g><rect class="box" x="20" y="930" width="280" height="85"/><text x="45" y="978" font-family="Arial" font-weight="700" font-size="22" fill="#143047">FileDataStore</text><text class="st" x="45" y="1005">implements DataStore</text></g>
+<g><rect class="box" x="500" y="930" width="320" height="85"/><text x="525" y="978" font-family="Arial" font-weight="700" font-size="22" fill="#143047">SafetyFirstStrategy</text><text class="st" x="525" y="1005">implements WasteStrategy</text></g>
+<g><rect class="box" x="850" y="775" width="330" height="100"/><path class="head" d="M868 775h294a18 18 0 0 1 18 18v43H850v-43a18 18 0 0 1 18-18"/><text class="title" x="872" y="811">FoodAction</text><text class="tag" x="1055" y="811">abstract</text><text class="st" x="872" y="860">execute(): ImpactRecord</text></g>
+<g><rect class="box" x="830" y="930" width="220" height="85"/><text x="850" y="978" font-family="Arial" font-weight="700" font-size="20" fill="#143047">DonationAction</text><text class="st" x="850" y="1005">redistribute</text></g>
+<g><rect class="box" x="1070" y="930" width="220" height="85"/><text x="1090" y="978" font-family="Arial" font-weight="700" font-size="20" fill="#143047">CompostAction</text><text class="st" x="1090" y="1005">compost</text></g>
+</svg>

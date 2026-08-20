@@ -1,0 +1,5 @@
+out/
+data/ecoplate-data.txt
+*.class
+.idea/
+.vscode/
